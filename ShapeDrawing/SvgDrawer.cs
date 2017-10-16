@@ -11,7 +11,7 @@ internal class SvgDrawer : IDrawer
         this.writer = writer;
     }
 
-    public void DrawEllipse(Color color, int x, int y, int diameter)
+    void IDrawer.DrawEllipse(Color color, int x, int y, int diameter)
     {
         writer.WriteLine(string.Format(
             "<circle cx=\"{0}\" cy=\"{1}\" r=\"{2}\" stroke-width=\"1\" fill=\"none\" stroke=\"{3}\" />"
@@ -22,7 +22,7 @@ internal class SvgDrawer : IDrawer
         );
     }
 
-    public void DrawLine(Color color, int x1, int y1, int x2, int y2)
+    void IDrawer.DrawLine(Color color, int x1, int y1, int x2, int y2)
     {
         writer.WriteLine(string.Format(
             "<polyline points=\"{0},{1} {2},{3}\" style=\"fill:none;stroke:{4};stroke-width:1\" />"
