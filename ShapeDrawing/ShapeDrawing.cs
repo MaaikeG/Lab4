@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
+using ShapeDrawing;
 
 public class ShapeDrawingForm : Form
 {
@@ -68,21 +68,30 @@ public class ShapeDrawingForm : Form
 		{
 			if((stream = saveFileDialog.OpenFile()) != null)
 			{
-				// Insert code here that generates the string of LaTeX
-                //   commands to draw the shapes
                 using(StreamWriter writer = new StreamWriter(stream))
                 {
-                        // Write strings to the file here using:
-                        //   writer.WriteLine("Hello World!");
+                    writer.Write( "<?xml version=\"1.0\" standalone=\"no\"?> "
+                                 + "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" "
+                                 + "\"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\" >"
+                                 + "<svg xmlns = \"http://www.w3.org/2000/svg\" version = \"1.1\" >");
+                    foreach (Shape shape in shapes)
+                    {
+                        shape.SetDrawer(new SvgDrawer(writer));
+                        shape.Draw();
+                    }
+                    writer.Write("</svg>");
                 }				
 			}
 		}
 	}
 
     private void OnPaint(object sender, PaintEventArgs e)
-	{
-		// Draw all the shapes
-		foreach(Shape shape in shapes)
-			shape.Draw(e.Graphics);
-	}
+    {
+        // Draw all the shapes
+        foreach (Shape shape in shapes)
+        {
+            shape.SetDrawer(new CanvasDrawer(e.Graphics));
+            shape.Draw();
+        }
+    }
 }

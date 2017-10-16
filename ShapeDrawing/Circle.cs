@@ -1,27 +1,21 @@
-﻿using System;
-using System.Drawing;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 
 class Circle : Shape
 {
-
     private int x;
 	private int y;
-	private int size;
+	private int diameter;
 
-    public Circle(int x, int y, int size)
+    public Circle(int x, int y, int diameter)
     {
 		this.x = x;
 		this.y = y;
-		this.size = size;
+		this.diameter = diameter;
     }
 
-    public override void Draw(Graphics Canvas)
+    public override void Draw()
     {
-		Pen pen = new Pen(Color.Black);
-        Canvas.DrawEllipse(pen, this.x, this.y, this.size, this.size);
+        drawer.DrawEllipse(Color.Black, this.x, this.y, this.diameter);
     }
 
 }

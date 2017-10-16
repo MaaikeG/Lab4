@@ -6,7 +6,6 @@ using System.Text;
 
 public class Star : Shape
 {
-
 	private int x;
 	private int y;
 	private int width;
@@ -20,10 +19,8 @@ public class Star : Shape
 		this.height = height;
 	}
 
-	public override void Draw (Graphics Canvas)
+	public override void Draw ()
 	{
-		Pen pen = new Pen (Color.Black);
-
 		int numPoints = 5;
 		Point[] pts = new Point[numPoints];
 		double rx = width / 2;
@@ -44,7 +41,7 @@ public class Star : Shape
 
 		for (i = 0; i < numPoints; i++) 
 		{
-			Canvas.DrawLine(pen,pts[i].X,
+			drawer.DrawLine(Color.Black,pts[i].X,
                                 pts[i].Y,
                                 pts[(i+1) % numPoints].X,
                                 pts[(i+1) % numPoints].Y);

@@ -3,11 +3,10 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using ShapeDrawing;
 
 class Rectangle : Shape
 {
-
     private int x;
 	private int y;
 	private int width;
@@ -21,13 +20,12 @@ class Rectangle : Shape
 		this.height = height;
     }
     
-	public override void Draw(Graphics Canvas)
+	public override void Draw()
     {
-		Pen pen = new Pen(Color.Black);
-		Canvas.DrawLine(pen,x,y,x + width,y);
-		Canvas.DrawLine(pen,x+width,y,x+width,y+height);
-		Canvas.DrawLine(pen,x+width,y+height,x,y+height);
-		Canvas.DrawLine(pen,x,y+height,x,y);
+		drawer.DrawLine(Color.Black,x,y,x + width,y);
+		drawer.DrawLine(Color.Black,x+width,y,x+width,y+height);
+		drawer.DrawLine(Color.Black,x+width,y+height,x,y+height);
+		drawer.DrawLine(Color.Black, x,y+height,x,y);
     }
 }
 
