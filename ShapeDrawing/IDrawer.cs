@@ -9,6 +9,6 @@ namespace ShapeDrawing
     {
         void DrawLine(Color color, int x1, int y1, int x2, int y2);
 
-        void DrawEllipse(Color color, int x, int y, int size);
+        void DrawEllipse(Color color, int x, int y, int diameter);
     }
 }
