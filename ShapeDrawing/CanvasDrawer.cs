@@ -17,13 +17,13 @@ namespace ShapeDrawing
 
         void IDrawer.DrawEllipse(Color color, int x, int y, int diameter)
         {
-            Pen pen = new Pen(Color.Black);
+            Pen pen = new Pen(color);
             graphics.DrawEllipse(pen, x, y, diameter, diameter);
         }
 
         void IDrawer.DrawLine(Color color, int x1, int y1, int x2, int y2)
         {
-            Pen pen = new Pen(Color.Black);
+            Pen pen = new Pen(color);
             graphics.DrawLine(pen, x1, y1, x2, y2);
         }
     }

@@ -1,12 +1,10 @@
 using ShapeDrawing;
+using System.Drawing;
 
 public abstract class Shape
 {
     protected IDrawer drawer;
-
-	public Shape()
-	{
-	}
+    public Color color;
 
     public abstract void Draw();
 

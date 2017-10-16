@@ -18,7 +18,7 @@ internal class SvgDrawer : IDrawer
             , x + diameter / 2
             , y + diameter / 2
             , diameter / 2
-            , color.Name)
+            , ColorTranslator.ToHtml(color))
         );
     }
 
@@ -30,7 +30,7 @@ internal class SvgDrawer : IDrawer
             , y1
             , x2
             , y2
-            , color.Name)
+            , ColorTranslator.ToHtml(color))
         );
 
     }

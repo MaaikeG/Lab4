@@ -11,12 +11,13 @@ public class Star : Shape
 	private int width;
 	private int height;
 
-	public Star (int x, int y, int width, int height)
+	public Star (int x, int y, int width, int height, Color color)
 	{
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+        this.color = color;
 	}
 
 	public override void Draw ()
@@ -41,7 +42,7 @@ public class Star : Shape
 
 		for (i = 0; i < numPoints; i++) 
 		{
-			drawer.DrawLine(Color.Black,pts[i].X,
+			drawer.DrawLine(color,pts[i].X,
                                 pts[i].Y,
                                 pts[(i+1) % numPoints].X,
                                 pts[(i+1) % numPoints].Y);
