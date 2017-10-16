@@ -74,11 +74,9 @@ public class ShapeDrawingForm : Form
                                  + "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" "
                                  + "\"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\" >"
                                  + "<svg xmlns = \"http://www.w3.org/2000/svg\" version = \"1.1\" >");
-                    foreach (Shape shape in shapes)
-                    {
-                        shape.SetDrawer(new SvgDrawer(writer));
-                        shape.Draw();
-                    }
+
+                    DrawShapes(new SvgDrawer(writer));
+
                     writer.Write("</svg>");
                 }				
 			}
@@ -87,10 +85,15 @@ public class ShapeDrawingForm : Form
 
     private void OnPaint(object sender, PaintEventArgs e)
     {
+        DrawShapes(new CanvasDrawer(e.Graphics));
+    }
+
+    private void DrawShapes(IDrawer drawer)
+    {
         // Draw all the shapes
         foreach (Shape shape in shapes)
         {
-            shape.SetDrawer(new CanvasDrawer(e.Graphics));
+            shape.SetDrawer(drawer);
             shape.Draw();
         }
     }
